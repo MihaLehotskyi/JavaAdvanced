@@ -29,12 +29,12 @@ public class EmployeeDao {
 		preparedStatement.executeUpdate();
 	}
 	
-	public Employee read(int id) throws SQLException {
+	public void read(int id) throws SQLException {
 		preparedStatement = connection.prepareStatement(READ_BY_ID);
 		preparedStatement.setInt(1, id);
 		ResultSet result = preparedStatement.executeQuery();
 		result.next();
-	    return EmployeeMapper.map(result);
+		System.out.println(EmployeeMapper.map(result));
 	}
 	public void update(Employee e) throws SQLException {
 		preparedStatement = connection.prepareStatement(UPDATE_BY_ID);
